@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2 class="text-2xl font-semibold mb-4">Weather Forecast</h2>
+{% if forecast and forecast.list %}
+    <ul>
+        {% for item in forecast.list[:5] %}
+        <li class="mb-2">
+            <strong>{{ item.dt_txt }}</strong>: {{ item.main.temp }} &deg;C, {{ item.weather[0].description }}
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Forecast data not available.</p>
+{% endif %}
+{% endblock %}

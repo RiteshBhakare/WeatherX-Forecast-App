@@ -1,0 +1,10 @@
+/* static/css/style.css */
+
+/* Optional extra styles */
+.card {
+    @apply bg-white dark:bg-gray-800 shadow-md rounded-lg p-4;
+}
+
+.nav-link {
+    @apply hover:underline text-sm;
+}

@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-6">
+
+  <!-- Hero Image Section -->
+  <div class="text-center mb-8">
+    <img src="{{ url_for('static', filename='images/weatherapp_banner.jpg') }}" alt="Weather Banner" />
+    <h1 class="text-4xl font-bold mt-4">Welcome to WeatherX</h1>
+    <p class="text-lg text-gray-600 mt-2">Your trusted weather forecast and environmental guide</p>
+  </div>
+
+  <!-- Search Box -->
+  <div class="bg-white dark:bg-gray-800 shadow p-4 rounded-lg mb-6">
+    <h2 class="text-2xl font-semibold mb-3">Search Weather by City</h2>
+    <form method="GET" action="/live-weather" class="flex flex-col sm:flex-row gap-3">
+      <input type="text" name="city" placeholder="Enter city name" class="p-2 rounded border border-gray-300 flex-grow" required>
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Get Weather</button>
+    </form>
+  </div>
+
+  <!-- Weather Highlights -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+    <div class="bg-yellow-500 p-4 rounded-lg shadow-md">
+      <h3 class="text-xl font-bold">🌡️ Hottest Place</h3>
+      <p class="mt-2">Phalodi, Rajasthan – 51°C (record)</p>
+    </div>
+    <div class="bg-green-500 p-4 rounded-lg shadow-md">
+      <h3 class="text-xl font-bold">🍃 Cleanest Air Today</h3>
+      <p class="mt-2">Mawlynnong, Meghalaya – AQI: 12</p>
+    </div>
+    <div class="bg-blue-500 p-4 rounded-lg shadow-md">
+      <h3 class="text-xl font-bold">⛈️ Rainfall Alert</h3>
+      <p class="mt-2">Mumbai & Konkan Region – Heavy Rain Expected</p>
+    </div>
+  </div>
+
+  <!-- Rotating Weather Tips -->
+  <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md text-center">
+    <h2 class="text-2xl font-semibold mb-4">☀️ Weather Tips</h2>
+    <div id="tips" class="text-lg font-medium text-gray-700 dark:text-gray-300"></div>
+  </div>
+
+  <!-- Additional Image -->
+  <div class="mt-10">
+    <img src="/static/images/climate_awareness_banner.png" alt="Climate Awareness with Agribotics" class="w-full  rounded-lg shadow-lg my-2">
+
+  </div>
+
+</div>
+
+<script>
+  const tips = [
+    "🌞 Stay hydrated and wear sunscreen during peak sun hours.",
+    "🌧️ Carry an umbrella and avoid waterlogging during monsoon.",
+    "❄️ Dress in layers and keep warm during winter.",
+    "💨 Stay indoors during strong wind alerts.",
+    "⚡ Avoid open areas during lightning storms."
+  ];
+
+  let tipIndex = 0;
+  const tipElement = document.getElementById("tips");
+
+  function showTip() {
+    tipElement.textContent = tips[tipIndex];
+    tipIndex = (tipIndex + 1) % tips.length;
+  }
+
+  showTip();
+  setInterval(showTip, 5000); // Rotate every 5 seconds
+</script>
+{% endblock %}
+

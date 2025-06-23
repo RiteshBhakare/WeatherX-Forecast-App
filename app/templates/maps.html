@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2 class="text-2xl font-semibold mb-4">Interactive Weather Map</h2>
+<iframe src="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=18.5&lon=73.8&zoom=6"
+        class="w-full h-[500px] border"
+        loading="lazy">
+</iframe>
+{% endblock %}

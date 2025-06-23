@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}Smart Weather{% endblock %}</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Custom JavaScript -->
+    <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white">
+    <header class="flex justify-between items-center p-4 bg-blue-500 text-white">
+        <div class="flex items-center">
+            <img src="{{ url_for('static', filename='images/AgriBotics logo.jpg') }}" class="h-20 mr-5" alt="Logo">
+            <h1 class="text-xl font-bold">WeatherX</h1>
+        </div>
+        <div class="text-center">
+            <p class="text-sm">Your Local Weather, Smarter &amp; Faster</p>
+            <p id="datetime" class="text-xs"></p>
+        </div>
+        <button id="toggle-dark" class="ml-auto bg-blue-700 px-2 py-1 rounded text-white text-sm hover:bg-blue-800">
+            Toggle Dark Mode
+        </button>
+    </header>
+
+    <nav class="bg-blue-700 text-white p-2 flex space-x-4 justify-center">
+        <a href="/" class="hover:underline">Home</a>
+        <a href="/live-weather" class="hover:underline">Live Weather</a>
+        <a href="/forecast" class="hover:underline">Forecast</a>
+        <a href="/air-quality" class="hover:underline">Air Quality</a>
+        <a href="/maps" class="hover:underline">Maps</a>
+        <a href="/about" class="hover:underline">About</a>
+        <a href="/contact" class="hover:underline">Contact</a>
+    </nav>
+
+    <main class="p-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-blue-500 text-white p-4 text-center">
+        &copy; 2025 WeatherX. All rights reserved.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2 class="text-2xl font-semibold mb-4">Live Weather</h2>
+{% if weather %}
+    <p><strong>Location:</strong> {{ weather.name }}</p>
+    <p><strong>Temperature:</strong> {{ weather.main.temp }} &deg;C</p>
+    <p><strong>Weather:</strong> {{ weather.weather[0].description }}</p>
+{% else %}
+    <p>Weather data not available.</p>
+{% endif %}
+{% endblock %}
